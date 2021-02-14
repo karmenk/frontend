@@ -60,7 +60,8 @@ export default {
     csp: {
       hashAlgorithm: 'sha256',
       policies: {
-        'default-src': ["'self'"]
+        'default-src': ["'self'"],
+        'style-src': ["'self'", "'sha256-vE7czTnmxW0gHZ7TEiY1DDfrKTxEyqSZujrPag5uRVk='"]
       },
       addMeta: true
     }
