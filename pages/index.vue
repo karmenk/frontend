@@ -15,7 +15,6 @@ export default {
   async asyncData ({ params, error, store, req }) {
     console.log(store)
     try {
-      console.log(store.state.auth.clientId)
       const { data } = await axios.get(process.env.baseUrl + '/reading/' + store.state.auth.clientId, {
         // headers: {
         //   Authorization: getToken(req)
