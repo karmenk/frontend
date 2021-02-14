@@ -61,14 +61,18 @@ export default {
       hashAlgorithm: 'sha256',
       policies: {
         'default-src': ["'self'"],
-        'style-src': ["'self'", "'sha256-vE7czTnmxW0gHZ7TEiY1DDfrKTxEyqSZujrPag5uRVk='"]
+        'style-src': [
+          "'self'",
+          "'sha256-vE7czTnmxW0gHZ7TEiY1DDfrKTxEyqSZujrPag5uRVk='"
+        ],
+        'script-src-elem': [
+          "'self'"
+        ]
       },
       addMeta: true
     }
   },
 
   helmet: {
-    // nosniff: 'nosniff'
-    // frameguard: false,
   }
 }
