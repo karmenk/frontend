@@ -20,7 +20,4 @@ export default {
 </script>
 
 <style>
-.category {
-  background-color: lightgoldenrodyellow;
-}
 </style>

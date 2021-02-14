@@ -15,7 +15,9 @@ export default {
   },
   async asyncData ({ params, error, store, req }) {
     try {
-      const { data } = await axios.get(process.env.baseUrl + '/reading/' + store.state.auth.clientId + '?d=' + new Date().toISOString().split('T')[0], {
+      const { data } = await axios.get(process.env.baseUrl + '/reading/' +
+        store.state.auth.clientId + '?d=' + new Date().toISOString().split('T')[0],
+      {
         headers: {
           authorization: 'JWT ' + getToken()
         }

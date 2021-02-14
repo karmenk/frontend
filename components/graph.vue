@@ -78,7 +78,6 @@ export default {
 <style>
 .graph {
   min-height: 100vh;
-  width: 100vw;
   background-color: aliceblue;
   color: black;
   flex-direction: column;

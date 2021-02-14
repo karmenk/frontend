@@ -4,15 +4,12 @@
       <h1>Dashboard</h1>
     </div>
     <div class="account">
-      <p v-if="user">{{ user }}</p>
-      <p v-else>Logged out</p>
-      <div v-if="user">
+      <p v-if="user">
+        Welcome, {{ user }}
+      </p>
+
+      <div v-if="user" class="account-button">
         <a href="#" class="btn primary" @click.prevent="logOut()">Log out</a>
-      </div>
-      <div v-else>
-        <nuxt-link v-if="!user" to="/login" prefetch>
-          Login
-        </nuxt-link>
       </div>
     </div>
   </div>
@@ -37,7 +34,6 @@ export default {
 
 <style>
 .header {
-  width: 100vw;
   flex-direction: row;
   min-height: 4rem;
   justify-content: space-between;
@@ -45,6 +41,23 @@ export default {
   background-color: steelblue;
   color: white;
   padding: 2rem 14rem;
+}
+
+.account {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.account-button {
+  margin: 1rem;
+  background-color: #18567d;
+  padding: 0.6rem 1rem;
+}
+
+.account-button a {
+  text-decoration: none;
+  color: white;
 }
 
 </style>

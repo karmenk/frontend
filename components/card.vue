@@ -2,7 +2,6 @@
   <div class="container card">
     <div>
       <p>Day total: {{ total }}</p>
-      <p>{{ readings }}</p>
     </div>
   </div>
 </template>
@@ -13,10 +12,6 @@ export default {
     total: {
       type: Number,
       default: 0
-    },
-    readings: {
-      type: Array,
-      default: null
     }
   }
 }
@@ -24,9 +19,11 @@ export default {
 
 <style>
 .card {
-  background-color: palevioletred;
+  background-color: #e8ecef;
   width: 10rem;
   height: 5rem;
   align-items: center;
+  justify-content: center;
+  color: #2f2f2f;
 }
 </style>
