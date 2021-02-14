@@ -53,5 +53,9 @@ export default {
 
   router: {
     middleware: ['auth']
+  },
+
+  render: {
+    csp: true
   }
 }
