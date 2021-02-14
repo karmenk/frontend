@@ -4,21 +4,25 @@ import { setAuthToken, resetAuthToken } from '~/utils/auth'
 export const actions = {
   nuxtServerInit ({ dispatch }, context) {
     return new Promise((resolve, reject) => {
-      const cookies = cookie.parse(context.req.headers.cookie || '')
-      if (Object.prototype.hasOwnProperty.call(cookies, 'x-access-token')) {
-        setAuthToken(cookies['x-access-token'])
-        dispatch('auth/fetch')
-          .then((result) => {
-            resolve(true)
-          })
-          .catch((error) => {
-            console.log('Provided token is invalid:', error)
-            resetAuthToken()
-            resolve(false)
-          })
+      if (Object.prototype.hasOwnProperty.call(context, 'req')) {
+        const cookies = cookie.parse(context.req.headers.cookie || '')
+        if (Object.prototype.hasOwnProperty.call(cookies, 'x-access-token')) {
+          setAuthToken(cookies['x-access-token'])
+          dispatch('auth/fetch')
+            .then((result) => {
+              resolve(true)
+            })
+            .catch((error) => {
+              console.log('Provided token is invalid:', error)
+              resetAuthToken()
+              resolve(false)
+            })
+        } else {
+          resetAuthToken()
+          resolve(false)
+        }
       } else {
-        resetAuthToken()
-        resolve(false)
+        resolve(true)
       }
     })
   }
