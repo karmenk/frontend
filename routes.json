@@ -1,0 +1,23 @@
+[
+  {
+    "name": "dashboard",
+    "path": "/dashboard",
+    "component": "/home/runner/work/frontend/frontend/pages/dashboard.vue",
+    "chunkName": "pages/dashboard",
+    "_name": "_076aec4b"
+  },
+  {
+    "name": "login",
+    "path": "/login",
+    "component": "/home/runner/work/frontend/frontend/pages/login.vue",
+    "chunkName": "pages/login",
+    "_name": "_7aece620"
+  },
+  {
+    "name": "index",
+    "path": "/",
+    "component": "/home/runner/work/frontend/frontend/pages/index.vue",
+    "chunkName": "pages/index",
+    "_name": "_9d7579ee"
+  }
+]

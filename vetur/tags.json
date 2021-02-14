@@ -1,0 +1,26 @@
+{
+  "Card": {
+    "description": "Auto imported from /components/card.vue"
+  },
+  "LazyCard": {
+    "description": "Auto imported from /components/card.vue"
+  },
+  "Chart": {
+    "description": "Auto imported from /components/chart.vue"
+  },
+  "LazyChart": {
+    "description": "Auto imported from /components/chart.vue"
+  },
+  "Graph": {
+    "description": "Auto imported from /components/graph.vue"
+  },
+  "LazyGraph": {
+    "description": "Auto imported from /components/graph.vue"
+  },
+  "Header": {
+    "description": "Auto imported from /components/header.vue"
+  },
+  "LazyHeader": {
+    "description": "Auto imported from /components/header.vue"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "entry": "server.js",
+  "files": {
+    "pages/dashboard.js": "pages/dashboard.js",
+    "pages/index.js": "pages/index.js",
+    "pages/login.js": "pages/login.js",
+    "server.js": "server.js"
+  },
+  "maps": {
+    "pages/dashboard.js": "pages/dashboard.js.map",
+    "pages/index.js": "pages/index.js.map",
+    "pages/login.js": "pages/login.js.map",
+    "server.js": "server.js.map"
+  }
+}
