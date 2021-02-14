@@ -4,7 +4,8 @@ import { setAuthToken, resetAuthToken } from '~/utils/auth'
 export const actions = {
   nuxtServerInit ({ dispatch }, context) {
     return new Promise((resolve, reject) => {
-      if (Object.prototype.hasOwnProperty.call(context, 'req')) {
+      if (process.server) {
+      // if (Object.prototype.hasOwnProperty.call(context, 'req')) {
         const cookies = cookie.parse(context.req.headers.cookie || '')
         if (Object.prototype.hasOwnProperty.call(cookies, 'x-access-token')) {
           setAuthToken(cookies['x-access-token'])
