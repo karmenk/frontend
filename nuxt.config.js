@@ -66,7 +66,8 @@ export default {
           "'sha256-vE7czTnmxW0gHZ7TEiY1DDfrKTxEyqSZujrPag5uRVk='"
         ],
         'script-src-elem': [
-          "'self'"
+          "'self'",
+          "'https://karmen-frontend.herokuapp.com/_nuxt/'"
         ]
       },
       addMeta: true
