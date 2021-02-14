@@ -56,36 +56,6 @@ export default {
     middleware: ['auth']
   },
 
-  // render: {
-  //   csp: {
-  //     hashAlgorithm: 'sha256',
-  //     policies: {
-  //       'default-src': ["'self'"],
-  //       'style-src': [
-  //         "'self'",
-  //         "'unsafe-inline'"
-  //       ],
-  //       'script-src': [
-  //         "'self'",
-  //         'http://localhost:3000/_nuxt/runtime.js',
-  //         'http://localhost:3000/_nuxt/pages/login.js',
-  //         'http://localhost:3000/_nuxt/commons/app.js',
-  //         'http://localhost:3000/_nuxt/vendors/app.js',
-  //         'http://localhost:3000/_nuxt/app.js'
-  //       ],
-  //       'script-src-elem': [
-  //         "'self'",
-  //         'http://localhost:3000/_nuxt/runtime.js',
-  //         'http://localhost:3000/_nuxt/pages/login.js',
-  //         'http://localhost:3000/_nuxt/commons/app.js',
-  //         'http://localhost:3000/_nuxt/vendors/app.js',
-  //         'http://localhost:3000/_nuxt/app.js'
-  //       ]
-  //     },
-  //     addMeta: true
-  //   }
-  // },
-
   helmet: {
   }
 }
