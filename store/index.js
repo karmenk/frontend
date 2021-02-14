@@ -2,12 +2,16 @@ import cookie from 'cookie'
 import { setAuthToken, resetAuthToken } from '~/utils/auth'
 
 export const actions = {
-  nuxtServerInit ({ dispatch }, context) {
+  nuxtServerInit ({ dispatch }, { req }) {
+    console.log('nuxtServerInit')
+    // console.log(req)
     return new Promise((resolve, reject) => {
-      if (Object.prototype.hasOwnProperty.call(context, 'req')) {
-        const cookies = cookie.parse(context.req.headers.cookie || '')
+      if (req) {
+        console.log('is req')
+        const cookies = cookie.parse(req.headers.cookie || '')
         if (Object.prototype.hasOwnProperty.call(cookies, 'x-access-token')) {
           setAuthToken(cookies['x-access-token'])
+          console.log('dispatching')
           dispatch('auth/fetch')
             .then((result) => {
               resolve(true)

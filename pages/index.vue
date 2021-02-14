@@ -7,18 +7,18 @@
 <script>
 import axios from 'axios'
 import Dashboard from './dashboard'
+import { getToken } from '~/utils/auth'
 
 export default {
   components: {
     Dashboard
   },
   async asyncData ({ params, error, store, req }) {
-    console.log(store)
     try {
       const { data } = await axios.get(process.env.baseUrl + '/reading/' + store.state.auth.clientId, {
-        // headers: {
-        //   Authorization: getToken(req)
-        // }
+        headers: {
+          authorization: 'JWT ' + getToken()
+        }
       })
       console.log(data)
       return { data }

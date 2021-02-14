@@ -1,7 +1,7 @@
 import cookies from 'js-cookie'
-import jwt from 'jsonwebtoken'
+import axios from 'axios'
 import api from '~/api'
-import { setAuthToken, resetAuthToken } from '~/utils/auth'
+import { setAuthToken, resetAuthToken, getToken } from '~/utils/auth'
 
 export const state = () => ({
   userId: null,
@@ -25,7 +25,7 @@ export const mutations = {
 
 export const actions = {
   fetch ({ commit }) {
-    return api.auth.user(getToken())
+    return api.auth.user(getToken(), axios.defaults.headers.common['x-access-token'])
       .then((response) => {
         console.log('set_user:', response.data)
         commit('set_user', response.data)
@@ -39,7 +39,6 @@ export const actions = {
   login ({ commit }, data) {
     return api.auth.login(data, getToken())
       .then((response) => {
-        console.log(response.data)
         commit('set_user', response.data.user)
         setAuthToken(response.data.token)
         cookies.set('x-access-token', response.data.token, { expires: 7 })
@@ -52,11 +51,4 @@ export const actions = {
     cookies.remove('x-access-token')
     return Promise.resolve()
   }
-}
-
-const getToken = () => {
-  console.log(process.env.accessTokenSecret)
-  return jwt.sign({
-    service: 'frontend'
-  }, process.env.accessTokenSecret, { expiresIn: '1h' })
 }
