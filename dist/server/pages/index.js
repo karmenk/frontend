@@ -667,12 +667,12 @@ module.exports = exports;
 // ESM COMPAT FLAG
 __webpack_require__.r(__webpack_exports__);
 
-// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@nuxt/components/dist/loader.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./pages/index.vue?vue&type=template&id=99721fd6&
+// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@nuxt/components/dist/loader.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./pages/index.vue?vue&type=template&id=5862f6bf&
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"container"},[_c('Dashboard',{attrs:{"readings":_vm.data}})],1)}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./pages/index.vue?vue&type=template&id=99721fd6&
+// CONCATENATED MODULE: ./pages/index.vue?vue&type=template&id=5862f6bf&
 
 // EXTERNAL MODULE: external "axios"
 var external_axios_ = __webpack_require__(1);
@@ -708,7 +708,7 @@ var auth = __webpack_require__(2);
     try {
       const {
         data
-      } = await external_axios_default.a.get(undefined + '/reading/' + store.state.auth.clientId, {
+      } = await external_axios_default.a.get(undefined + '/reading/' + store.state.auth.clientId + '?d=' + new Date().toISOString().split('T')[0], {
         headers: {
           authorization: 'JWT ' + Object(auth["a" /* getToken */])()
         }
