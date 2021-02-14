@@ -68,7 +68,7 @@ export default {
   },
 
   helmet: {
-    nosniff: true
+    // nosniff: true
     // frameguard: false,
   }
 }
