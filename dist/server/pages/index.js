@@ -151,12 +151,12 @@ var component = Object(componentNormalizer["a" /* default */])(
 // ESM COMPAT FLAG
 __webpack_require__.r(__webpack_exports__);
 
-// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@nuxt/components/dist/loader.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./components/graph.vue?vue&type=template&id=36ee77b8&
+// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@nuxt/components/dist/loader.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./components/graph.vue?vue&type=template&id=102fef60&
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"container graph"},[_vm._ssrNode("<div class=\"legend\">","</div>",[_c('Card',{attrs:{"total":_vm.getTotal(_vm.readings)}}),_vm._ssrNode(" <div class=\"day\"><a href=\"#\">yesterday</a> <a href=\"#\">today</a></div>")],2),_vm._ssrNode(" "),_vm._ssrNode("<div class=\"chart\">","</div>",[_c('Chart',{attrs:{"chartdata":_vm.chartData,"options":_vm.chartOptions}})],1)],2)}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./components/graph.vue?vue&type=template&id=36ee77b8&
+// CONCATENATED MODULE: ./components/graph.vue?vue&type=template&id=102fef60&
 
 // EXTERNAL MODULE: ./components/card.vue + 4 modules
 var card = __webpack_require__(37);
@@ -244,11 +244,11 @@ var chart = __webpack_require__(38);
         if (i < index) {
           data.push(0);
         } else {
-          if (i >= readings.length) {
+          if (i >= readings.length + index) {
             break;
           }
 
-          data.push(readings[i].reading);
+          data.push(readings[i - index].reading);
         }
       }
 

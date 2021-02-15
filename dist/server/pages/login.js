@@ -51,12 +51,12 @@ module.exports = exports;
 // ESM COMPAT FLAG
 __webpack_require__.r(__webpack_exports__);
 
-// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@nuxt/components/dist/loader.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./pages/login.vue?vue&type=template&id=7f558b44&
+// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@nuxt/components/dist/loader.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./pages/login.vue?vue&type=template&id=6dc5e271&
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"container login"},[_vm._ssrNode("<div"+(_vm._ssrClass("login-container",{ error: _vm.isError }))+"><div class=\"logo\">\n      Log In\n    </div> <div class=\"login-item\"><form action method=\"post\" class=\"form form-login\"><div class=\"form-field\"><label for=\"login-username\" class=\"user\"><span class=\"hidden\">Username</span></label> <input id=\"login-username\" type=\"text\" placeholder=\"Username\""+(_vm._ssrAttr("value",(_vm.username)))+" class=\"form-input\"></div> <div class=\"form-field\"><label for=\"login-password\" class=\"lock\"><span class=\"hidden\">Password</span></label> <input id=\"login-password\" type=\"password\" placeholder=\"Password\""+(_vm._ssrAttr("value",(_vm.password)))+" class=\"form-input\"></div> "+((_vm.isError)?("<div class=\"error-message\"><span>"+_vm._ssrEscape(_vm._s(_vm.errorMessage))+"</span></div>"):"<!---->")+" <div class=\"form-field\"><a href=\"#\" class=\"btn primary\">Log in</a></div></form></div></div>")])}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./pages/login.vue?vue&type=template&id=7f558b44&
+// CONCATENATED MODULE: ./pages/login.vue?vue&type=template&id=6dc5e271&
 
 // CONCATENATED MODULE: ./node_modules/babel-loader/lib??ref--2-0!./node_modules/@nuxt/components/dist/loader.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./pages/login.vue?vue&type=script&lang=js&
 //
@@ -111,9 +111,12 @@ var staticRenderFns = []
           this.errorMessage = 'Something went wrong. Please try again';
         }
       }).catch(error => {
+        this.isError = true;
+
         if (error.response && error.response.data) {
-          this.isError = true;
           this.errorMessage = error.response.data.message;
+        } else {
+          this.errorMessage = 'Something went wrong. Please try again';
         }
       });
     },

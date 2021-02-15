@@ -3366,7 +3366,6 @@ const actions = {
     commit
   }) {
     return api.auth.user(Object(auth["a" /* getToken */])(), external_axios_default.a.defaults.headers.common['x-access-token']).then(response => {
-      console.log('set_user:', response.data);
       commit('set_user', response.data);
       return response;
     }).catch(error => {
