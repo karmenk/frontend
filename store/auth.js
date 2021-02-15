@@ -30,8 +30,7 @@ export const actions = {
         console.log('set_user:', response.data)
         commit('set_user', response.data)
         return response
-      })
-      .catch((error) => {
+      }).catch((error) => {
         commit('reset_user')
         return error
       })
@@ -43,6 +42,8 @@ export const actions = {
         setAuthToken(response.data.token)
         cookies.set('x-access-token', response.data.token, { expires: 7 })
         return response
+      }).catch((error) => {
+        throw error
       })
   },
   reset ({ commit }) {

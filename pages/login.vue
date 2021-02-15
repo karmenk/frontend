@@ -1,6 +1,6 @@
 <template>
   <div class="container login">
-    <div class="login-container">
+    <div class="login-container" :class="{ error: isError }">
       <div class="logo">
         Log In
       </div>
@@ -16,6 +16,7 @@
             <input id="login-password" v-model="password" type="password" class="form-input" placeholder="Password">
           </div>
 
+          <div v-if="isError" class="error-message"><span>{{ errorMessage }}</span></div>
           <div class="form-field">
             <a href="#" class="btn primary" @click.prevent="signIn()">Log in</a>
           </div>
@@ -30,30 +31,34 @@ export default {
   data () {
     return {
       username: '',
-      password: ''
+      password: '',
+      isError: false,
+      errorMessage: ''
     }
   },
   methods: {
     signIn () {
-      console.log('signin')
+      this.resetError()
       this.$store.dispatch('auth/login', {
         username: this.username,
         password: this.password
       }).then((result) => {
-        // this.alert = { type: 'success', message: result.data.message }
-        // this.loading = false
         if (result.data.token) {
           this.$router.push('/')
         } else {
-          console.log(result.data)
+          this.isError = true
+          this.errorMessage = 'Something went wrong. Please try again'
         }
       }).catch((error) => {
-        console.log(error)
-        // this.loading = false
-        // if (error.response && error.response.data) {
-        //   this.alert = { type: 'error', message: error.response.data.message || error.reponse.status }
-        // }
+        if (error.response && error.response.data) {
+          this.isError = true
+          this.errorMessage = error.response.data.message
+        }
       })
+    },
+    resetError () {
+      this.isError = false
+      this.errorMessage = ''
     }
   }
 }
@@ -69,6 +74,7 @@ export default {
 }
 
 .login-container {
+  border: none;
   background:rgba(58,63,68,0.5);
   border-radius: 5px;
   box-shadow: 0 1.5px 0 0 rgba(0,0,0,0.1);
@@ -81,7 +87,7 @@ export default {
   font-family: "museo-slab";
   font-size:20px;
   text-align: center;
-  padding: 20px 20px 0;
+  padding: 1.4rem 1.4rem 0;
   margin:0;
 }
 
@@ -176,5 +182,15 @@ input, a {
   padding: 0;
   position: absolute;
   width: 1px;
+}
+
+.login-container.error {
+  border: 1px solid #ef393c;
+}
+
+.error-message {
+  display: flex;
+  color: #ef393c;
+  padding: 0.5rem 0;
 }
 </style>
