@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <Dashboard :readings="data"></Dashboard>
+    <Dashboard :key="componentKey" :readings="data" @clicked="newChart"></Dashboard>
   </div>
 </template>
 
@@ -13,21 +13,25 @@ export default {
   components: {
     Dashboard
   },
-  async asyncData ({ params, error, store, req }) {
-    try {
-      const { data } = await axios.get(process.env.baseUrl + '/reading/' +
-        store.state.auth.clientId + '?d=' + new Date().toISOString().split('T')[0],
-      {
+  data () {
+    return {
+      data: [],
+      componentKey: 0
+    }
+  },
+  mounted () {
+    this.newChart(new Date().toISOString().split('T')[0])
+  },
+  methods: {
+    newChart (value) {
+      axios.get(process.env.baseUrl + '/reading/' + this.$store.state.auth.clientId + '?d=' + value, {
         headers: {
           authorization: 'JWT ' + getToken()
         }
-      })
-      console.log(data)
-      return { data }
-    } catch (e) {
-      console.log('catch error:', e)
-      // error({ statusCode: 404, message: e.message })
-      return { data: [] }
+      }).then((result) => {
+        this.data = result.data
+        this.componentKey += 1
+      }).catch(() => {})
     }
   }
 }

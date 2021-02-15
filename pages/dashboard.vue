@@ -1,7 +1,7 @@
 <template>
   <div class="container dashboard">
     <Header></Header>
-    <Graph :readings="readings"></Graph>
+    <Graph :readings="readings" @clicked="newChart"></Graph>
   </div>
 </template>
 
@@ -18,6 +18,11 @@ export default {
     readings: {
       type: Array,
       default: null
+    }
+  },
+  methods: {
+    newChart (value) {
+      this.$emit('clicked', value)
     }
   }
 }
