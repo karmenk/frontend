@@ -3385,6 +3385,8 @@ const actions = {
         expires: 7
       });
       return response;
+    }).catch(error => {
+      throw error;
     });
   },
 

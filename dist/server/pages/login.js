@@ -37,7 +37,7 @@ __webpack_require__.r(__webpack_exports__);
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(10);
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, ".login{background-color:#4682b4;display:flex;height:100vh;justify-content:center;align-items:center}.login-container{background:rgba(58,63,68,.5);border-radius:5px;box-shadow:0 1.5px 0 0 rgba(0,0,0,.1);width:450px;display:flex;flex-direction:column}.logo{font-family:\"museo-slab\";font-size:20px;text-align:center;padding:20px 20px 0;margin:0}.login-item{color:#fff;padding:25px 25px 0;margin:20px 20px 0;border-radius:3px}a,input{border:0;color:inherit;font:inherit;margin:0;outline:0;padding:0;transition:background-color .3s}.user:before{content:\"\\f007\"}.lock:before,.user:before{font:14px fontawesome;color:#5b5b5b}.lock:before{content:\"\\f023\"}.form a,.form input[type=password],.form input[type=text]{width:100%}.form-login a,.form-login input[type=password],.form-login input[type=text],.form-login label{border-radius:.25rem;padding:1rem;color:#3a3f44}.form-login label{background-color:#222;border-bottom-right-radius:0;border-top-right-radius:0;padding-left:1.25rem;padding-right:1.25rem}.form-login input[type=password],.form-login input[type=text]{background-color:#fff;border-bottom-left-radius:0;border-top-left-radius:0}.form-login input[type=password]:focus,.form-login input[type=password]:hover,.form-login input[type=text]:focus,.form-login input[type=text]:hover{background-color:#eee}.form-login a{text-decoration:none;background-color:#00b9bc;color:#eee;font-weight:700;text-transform:uppercase}.form-login a:focus,.form-login a:hover{background-color:#197071}.form-field{display:flex;margin-bottom:2rem;text-align:center}.hidden{border:0;clip:rect(0 0 0 0);height:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;width:1px}", ""]);
+exports.push([module.i, ".login{background-color:#4682b4;display:flex;height:100vh;justify-content:center;align-items:center}.login-container{border:none;background:rgba(58,63,68,.5);border-radius:5px;box-shadow:0 1.5px 0 0 rgba(0,0,0,.1);width:450px;display:flex;flex-direction:column}.logo{font-family:\"museo-slab\";font-size:20px;text-align:center;padding:1.4rem 1.4rem 0;margin:0}.login-item{color:#fff;padding:25px 25px 0;margin:20px 20px 0;border-radius:3px}a,input{border:0;color:inherit;font:inherit;margin:0;outline:0;padding:0;transition:background-color .3s}.user:before{content:\"\\f007\"}.lock:before,.user:before{font:14px fontawesome;color:#5b5b5b}.lock:before{content:\"\\f023\"}.form a,.form input[type=password],.form input[type=text]{width:100%}.form-login a,.form-login input[type=password],.form-login input[type=text],.form-login label{border-radius:.25rem;padding:1rem;color:#3a3f44}.form-login label{background-color:#222;border-bottom-right-radius:0;border-top-right-radius:0;padding-left:1.25rem;padding-right:1.25rem}.form-login input[type=password],.form-login input[type=text]{background-color:#fff;border-bottom-left-radius:0;border-top-left-radius:0}.form-login input[type=password]:focus,.form-login input[type=password]:hover,.form-login input[type=text]:focus,.form-login input[type=text]:hover{background-color:#eee}.form-login a{text-decoration:none;background-color:#00b9bc;color:#eee;font-weight:700;text-transform:uppercase}.form-login a:focus,.form-login a:hover{background-color:#197071}.form-field{display:flex;margin-bottom:2rem;text-align:center}.hidden{border:0;clip:rect(0 0 0 0);height:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;width:1px}.login-container.error{border:1px solid #ef393c}.error-message{display:flex;color:#ef393c;padding:.5rem 0}", ""]);
 // Exports
 module.exports = exports;
 
@@ -51,14 +51,15 @@ module.exports = exports;
 // ESM COMPAT FLAG
 __webpack_require__.r(__webpack_exports__);
 
-// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@nuxt/components/dist/loader.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./pages/login.vue?vue&type=template&id=563a91ac&
-var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"container login"},[_vm._ssrNode("<div class=\"login-container\"><div class=\"logo\">\n      Log In\n    </div> <div class=\"login-item\"><form action method=\"post\" class=\"form form-login\"><div class=\"form-field\"><label for=\"login-username\" class=\"user\"><span class=\"hidden\">Username</span></label> <input id=\"login-username\" type=\"text\" placeholder=\"Username\""+(_vm._ssrAttr("value",(_vm.username)))+" class=\"form-input\"></div> <div class=\"form-field\"><label for=\"login-password\" class=\"lock\"><span class=\"hidden\">Password</span></label> <input id=\"login-password\" type=\"password\" placeholder=\"Password\""+(_vm._ssrAttr("value",(_vm.password)))+" class=\"form-input\"></div> <div class=\"form-field\"><a href=\"#\" class=\"btn primary\">Log in</a></div></form></div></div>")])}
+// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@nuxt/components/dist/loader.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./pages/login.vue?vue&type=template&id=7f558b44&
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"container login"},[_vm._ssrNode("<div"+(_vm._ssrClass("login-container",{ error: _vm.isError }))+"><div class=\"logo\">\n      Log In\n    </div> <div class=\"login-item\"><form action method=\"post\" class=\"form form-login\"><div class=\"form-field\"><label for=\"login-username\" class=\"user\"><span class=\"hidden\">Username</span></label> <input id=\"login-username\" type=\"text\" placeholder=\"Username\""+(_vm._ssrAttr("value",(_vm.username)))+" class=\"form-input\"></div> <div class=\"form-field\"><label for=\"login-password\" class=\"lock\"><span class=\"hidden\">Password</span></label> <input id=\"login-password\" type=\"password\" placeholder=\"Password\""+(_vm._ssrAttr("value",(_vm.password)))+" class=\"form-input\"></div> "+((_vm.isError)?("<div class=\"error-message\"><span>"+_vm._ssrEscape(_vm._s(_vm.errorMessage))+"</span></div>"):"<!---->")+" <div class=\"form-field\"><a href=\"#\" class=\"btn primary\">Log in</a></div></form></div></div>")])}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./pages/login.vue?vue&type=template&id=563a91ac&
+// CONCATENATED MODULE: ./pages/login.vue?vue&type=template&id=7f558b44&
 
 // CONCATENATED MODULE: ./node_modules/babel-loader/lib??ref--2-0!./node_modules/@nuxt/components/dist/loader.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./pages/login.vue?vue&type=script&lang=js&
+//
 //
 //
 //
@@ -90,30 +91,36 @@ var staticRenderFns = []
   data() {
     return {
       username: '',
-      password: ''
+      password: '',
+      isError: false,
+      errorMessage: ''
     };
   },
 
   methods: {
     signIn() {
-      console.log('signin');
+      this.resetError();
       this.$store.dispatch('auth/login', {
         username: this.username,
         password: this.password
       }).then(result => {
-        // this.alert = { type: 'success', message: result.data.message }
-        // this.loading = false
         if (result.data.token) {
           this.$router.push('/');
         } else {
-          console.log(result.data);
+          this.isError = true;
+          this.errorMessage = 'Something went wrong. Please try again';
         }
       }).catch(error => {
-        console.log(error); // this.loading = false
-        // if (error.response && error.response.data) {
-        //   this.alert = { type: 'error', message: error.response.data.message || error.reponse.status }
-        // }
+        if (error.response && error.response.data) {
+          this.isError = true;
+          this.errorMessage = error.response.data.message;
+        }
       });
+    },
+
+    resetError() {
+      this.isError = false;
+      this.errorMessage = '';
     }
 
   }

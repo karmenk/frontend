@@ -151,12 +151,12 @@ var component = Object(componentNormalizer["a" /* default */])(
 // ESM COMPAT FLAG
 __webpack_require__.r(__webpack_exports__);
 
-// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@nuxt/components/dist/loader.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./components/graph.vue?vue&type=template&id=69889e28&
-var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"container graph"},[_vm._ssrNode("<div class=\"legend\">","</div>",[_c('Card',{attrs:{"total":_vm.getTotal(_vm.readings)}})],1),_vm._ssrNode(" "),_vm._ssrNode("<div class=\"chart\">","</div>",[_c('Chart',{attrs:{"chartdata":_vm.chartData,"options":_vm.chartOptions}})],1)],2)}
+// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@nuxt/components/dist/loader.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./components/graph.vue?vue&type=template&id=36ee77b8&
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"container graph"},[_vm._ssrNode("<div class=\"legend\">","</div>",[_c('Card',{attrs:{"total":_vm.getTotal(_vm.readings)}}),_vm._ssrNode(" <div class=\"day\"><a href=\"#\">yesterday</a> <a href=\"#\">today</a></div>")],2),_vm._ssrNode(" "),_vm._ssrNode("<div class=\"chart\">","</div>",[_c('Chart',{attrs:{"chartdata":_vm.chartData,"options":_vm.chartOptions}})],1)],2)}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./components/graph.vue?vue&type=template&id=69889e28&
+// CONCATENATED MODULE: ./components/graph.vue?vue&type=template&id=36ee77b8&
 
 // EXTERNAL MODULE: ./components/card.vue + 4 modules
 var card = __webpack_require__(37);
@@ -165,6 +165,10 @@ var card = __webpack_require__(37);
 var chart = __webpack_require__(38);
 
 // CONCATENATED MODULE: ./node_modules/babel-loader/lib??ref--2-0!./node_modules/@nuxt/components/dist/loader.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./components/graph.vue?vue&type=script&lang=js&
+//
+//
+//
+//
 //
 //
 //
@@ -225,12 +229,49 @@ var chart = __webpack_require__(38);
         return a + b;
       }, 0);
     },
-    getData: readings => {
-      const data = readings.map(r => {
-        return parseInt(r.reading);
-      });
+
+    getData(readings) {
+      if (!readings.length) {
+        return [];
+      }
+
+      const substring = readings[0].time.slice(11, 13);
+      const labels = this.getLabels();
+      const index = labels.concat(labels[0]).indexOf(substring) + 1;
+      const data = [];
+
+      for (let i = 0; i < labels.length; i++) {
+        if (i < index) {
+          data.push(0);
+        } else {
+          if (i >= readings.length) {
+            break;
+          }
+
+          data.push(readings[i].reading);
+        }
+      }
+
       return data.slice(0, 24);
+    },
+
+    getLabels: () => {
+      return ['00', '01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23'];
+    },
+
+    onClickButton(event) {
+      const today = new Date();
+
+      if (event === 'today') {
+        this.$emit('clicked', today.toISOString().split('T')[0]);
+      } else {
+        const yesterday = today.setDate(today.getDate() - 1);
+        console.log(new Date(yesterday));
+        console.log('yesterday:', new Date(yesterday).toISOString().split('T')[0]);
+        this.$emit('clicked', new Date(yesterday).toISOString().split('T')[0]);
+      }
     }
+
   }
 });
 // CONCATENATED MODULE: ./components/graph.vue?vue&type=script&lang=js&
@@ -458,7 +499,7 @@ __webpack_require__.r(__webpack_exports__);
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(10);
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, ".graph{min-height:100vh;background-color:#f0f8ff;color:#000;flex-direction:column;padding:2rem 14rem}.legend{margin-bottom:3rem;display:flex;flex-direction:row}.chart{position:relative;left:50%;transform:translateX(-50%)}", ""]);
+exports.push([module.i, ".graph{min-height:100vh;background-color:#f0f8ff;color:#000;flex-direction:column;padding:2rem 14rem}.legend{margin-bottom:3rem;display:flex;flex-direction:row}.chart{position:relative;left:50%;transform:translateX(-50%)}.day{display:flex;flex-grow:1;align-items:center;justify-content:space-evenly}.day a{color:#2f2f2f}", ""]);
 // Exports
 module.exports = exports;
 
@@ -512,12 +553,12 @@ module.exports.__inject__ = function (context) {
 // ESM COMPAT FLAG
 __webpack_require__.r(__webpack_exports__);
 
-// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@nuxt/components/dist/loader.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./pages/dashboard.vue?vue&type=template&id=50d7ba33&
-var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"container dashboard"},[_c('Header'),_vm._ssrNode(" "),_c('Graph',{attrs:{"readings":_vm.readings}})],2)}
+// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@nuxt/components/dist/loader.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./pages/dashboard.vue?vue&type=template&id=2cced93b&
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"container dashboard"},[_c('Header'),_vm._ssrNode(" "),_c('Graph',{attrs:{"readings":_vm.readings},on:{"clicked":_vm.newChart}})],2)}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./pages/dashboard.vue?vue&type=template&id=50d7ba33&
+// CONCATENATED MODULE: ./pages/dashboard.vue?vue&type=template&id=2cced93b&
 
 // EXTERNAL MODULE: ./components/header.vue + 4 modules
 var header = __webpack_require__(35);
@@ -545,6 +586,12 @@ var graph = __webpack_require__(36);
       type: Array,
       default: null
     }
+  },
+  methods: {
+    newChart(value) {
+      this.$emit('clicked', value);
+    }
+
   }
 });
 // CONCATENATED MODULE: ./pages/dashboard.vue?vue&type=script&lang=js&
@@ -617,12 +664,12 @@ module.exports = exports;
 // ESM COMPAT FLAG
 __webpack_require__.r(__webpack_exports__);
 
-// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@nuxt/components/dist/loader.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./pages/index.vue?vue&type=template&id=3ac566da&
-var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"container"},[_c('Dashboard',{attrs:{"readings":_vm.data}})],1)}
+// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@nuxt/components/dist/loader.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./pages/index.vue?vue&type=template&id=39d14a08&
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"container"},[_c('Dashboard',{key:_vm.componentKey,attrs:{"readings":_vm.data},on:{"clicked":_vm.newChart}})],1)}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./pages/index.vue?vue&type=template&id=3ac566da&
+// CONCATENATED MODULE: ./pages/index.vue?vue&type=template&id=39d14a08&
 
 // EXTERNAL MODULE: external "axios"
 var external_axios_ = __webpack_require__(1);
@@ -649,33 +696,30 @@ var auth = __webpack_require__(2);
     Dashboard: dashboard["default"]
   },
 
-  async asyncData({
-    params,
-    error,
-    store,
-    req
-  }) {
-    try {
-      const {
-        data
-      } = await external_axios_default.a.get(undefined + '/reading/' + store.state.auth.clientId + '?d=' + new Date().toISOString().split('T')[0], {
+  data() {
+    return {
+      data: [],
+      componentKey: 0
+    };
+  },
+
+  mounted() {
+    this.newChart(new Date().toISOString().split('T')[0]);
+  },
+
+  methods: {
+    newChart(value) {
+      external_axios_default.a.get(undefined + '/reading/' + this.$store.state.auth.clientId + '?d=' + value, {
         headers: {
           authorization: 'JWT ' + Object(auth["a" /* getToken */])()
         }
-      });
-      console.log(data);
-      return {
-        data
-      };
-    } catch (e) {
-      console.log('catch error:', e); // error({ statusCode: 404, message: e.message })
-
-      return {
-        data: []
-      };
+      }).then(result => {
+        this.data = result.data;
+        this.componentKey += 1;
+      }).catch(() => {});
     }
-  }
 
+  }
 });
 // CONCATENATED MODULE: ./pages/index.vue?vue&type=script&lang=js&
  /* harmony default export */ var pagesvue_type_script_lang_js_ = (lib_vue_loader_options_pagesvue_type_script_lang_js_); 
