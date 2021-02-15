@@ -27,7 +27,6 @@ export const actions = {
   fetch ({ commit }) {
     return api.auth.user(getToken(), axios.defaults.headers.common['x-access-token'])
       .then((response) => {
-        console.log('set_user:', response.data)
         commit('set_user', response.data)
         return response
       }).catch((error) => {

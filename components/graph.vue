@@ -81,8 +81,8 @@ export default {
         if (i < index) {
           data.push(0)
         } else {
-          if (i >= readings.length) { break }
-          data.push(readings[i].reading)
+          if (i >= readings.length + index) { break }
+          data.push(readings[i - index].reading)
         }
       }
       return data.slice(0, 24)

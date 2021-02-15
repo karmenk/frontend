@@ -50,9 +50,11 @@ export default {
           this.errorMessage = 'Something went wrong. Please try again'
         }
       }).catch((error) => {
+        this.isError = true
         if (error.response && error.response.data) {
-          this.isError = true
           this.errorMessage = error.response.data.message
+        } else {
+          this.errorMessage = 'Something went wrong. Please try again'
         }
       })
     },
