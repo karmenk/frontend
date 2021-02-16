@@ -70,22 +70,19 @@ export default {
       }, 0)
     },
     getData (readings) {
-      if (!readings.length) {
-        return []
-      }
-      const substring = readings[0].time.slice(11, 13)
       const labels = this.getLabels()
-      const index = labels.concat(labels[0]).indexOf(substring) + 1
-      const data = []
-      for (let i = 0; i < labels.length; i++) {
-        if (i < index) {
-          data.push(0)
+      const times = readings.map((r) => {
+        return r.time.slice(11, 13)
+      })
+      const r = labels.map((l) => {
+        if (times.includes(l)) {
+          return readings[times.indexOf(l)].reading
         } else {
-          if (i >= readings.length + index) { break }
-          data.push(readings[i - index].reading)
+          return 0
         }
-      }
-      return data.slice(0, 24)
+      })
+      r.unshift(r.pop())
+      return r
     },
     getLabels: () => {
       return [
@@ -101,8 +98,6 @@ export default {
         this.$emit('clicked', today.toISOString().split('T')[0])
       } else {
         const yesterday = today.setDate(today.getDate() - 1)
-        console.log(new Date(yesterday))
-        console.log('yesterday:', new Date(yesterday).toISOString().split('T')[0])
         this.$emit('clicked', new Date(yesterday).toISOString().split('T')[0])
       }
     }
