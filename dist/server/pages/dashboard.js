@@ -157,12 +157,12 @@ var component = Object(componentNormalizer["a" /* default */])(
 // ESM COMPAT FLAG
 __webpack_require__.r(__webpack_exports__);
 
-// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@nuxt/components/dist/loader.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./components/graph.vue?vue&type=template&id=102fef60&
+// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@nuxt/components/dist/loader.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./components/graph.vue?vue&type=template&id=766a170a&
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"container graph"},[_vm._ssrNode("<div class=\"legend\">","</div>",[_c('Card',{attrs:{"total":_vm.getTotal(_vm.readings)}}),_vm._ssrNode(" <div class=\"day\"><a href=\"#\">yesterday</a> <a href=\"#\">today</a></div>")],2),_vm._ssrNode(" "),_vm._ssrNode("<div class=\"chart\">","</div>",[_c('Chart',{attrs:{"chartdata":_vm.chartData,"options":_vm.chartOptions}})],1)],2)}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./components/graph.vue?vue&type=template&id=102fef60&
+// CONCATENATED MODULE: ./components/graph.vue?vue&type=template&id=766a170a&
 
 // EXTERNAL MODULE: ./components/card.vue + 4 modules
 var card = __webpack_require__(37);
@@ -237,28 +237,19 @@ var chart = __webpack_require__(38);
     },
 
     getData(readings) {
-      if (!readings.length) {
-        return [];
-      }
-
-      const substring = readings[0].time.slice(11, 13);
       const labels = this.getLabels();
-      const index = labels.concat(labels[0]).indexOf(substring) + 1;
-      const data = [];
-
-      for (let i = 0; i < labels.length; i++) {
-        if (i < index) {
-          data.push(0);
+      const times = readings.map(r => {
+        return r.time.slice(11, 13);
+      });
+      const r = labels.map(l => {
+        if (times.includes(l)) {
+          return readings[times.indexOf(l)].reading;
         } else {
-          if (i >= readings.length + index) {
-            break;
-          }
-
-          data.push(readings[i - index].reading);
+          return 0;
         }
-      }
-
-      return data.slice(0, 24);
+      });
+      r.unshift(r.pop());
+      return r;
     },
 
     getLabels: () => {
@@ -272,8 +263,6 @@ var chart = __webpack_require__(38);
         this.$emit('clicked', today.toISOString().split('T')[0]);
       } else {
         const yesterday = today.setDate(today.getDate() - 1);
-        console.log(new Date(yesterday));
-        console.log('yesterday:', new Date(yesterday).toISOString().split('T')[0]);
         this.$emit('clicked', new Date(yesterday).toISOString().split('T')[0]);
       }
     }
